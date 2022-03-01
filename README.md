@@ -1,6 +1,6 @@
 ## Hatchways backend assessement
 
-## This is a backend API which fetches all blog posts basis the tag provided from an external API and created unit tests for each of the function.
+#### This is a backend API which fetches all blog posts basis the tag provided from an external API and created unit tests for each of the function.
 
 1. created dynamic routes ("/api/posts") basis the parameters(tag, sortBy, direction) provided by the user.
 2. The user needs to add tag and test fails if the tag is missing. (/api/posts?tags=tech, health)
@@ -9,7 +9,7 @@
 5. Direction can be asc or desc and if user doesn't provide a direction, then we assume it to be ascending.
 
 
-## Usage:
+##### Usage:
 1. used pip freeze to record all enviroment variables.
 2. to install the dependencies in virtual env, create and activate the env and then install from requirements.
 3. flask run to start the server
