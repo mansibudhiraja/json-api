@@ -1,4 +1,3 @@
-## Hatchways backend assessement
 
 #### This is a backend API which fetches all blog posts basis the tag provided from an external API and created unit tests for each of the function.
 
