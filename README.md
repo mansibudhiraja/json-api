@@ -15,6 +15,5 @@
 3. flask run to start the server
 4. check route /api/ping
 5. check route /api/posts?tags={tagName}&sortby={sortby}&direction={direction}
-6. Added cache using flask cahing module
+6. Added cache using flask cahing module and used Postman to check the response time
 7. you can run the unit tests using command : python -m unittest discover . -v
-
