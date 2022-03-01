@@ -18,6 +18,23 @@ dct2 = {"posts": [
 #     all_posts = json.loads(data)
 #     return all_posts
 
+#this function validates the parameters
+def validate_function(tags, sortBy, direction):
+    validsortBy = ['id', 'author', 'authorID', 'likes', 'popularity', 'reads', 'tags', None]
+    validDirections = ['asc', 'desc', None]
+
+    if not tags or len(tags) == 0:
+        raise ValueError("Tags parameter is required")
+
+    if sortBy not in validsortBy:
+        raise ValueError("sortBy parameter is invalid")
+        
+    if direction not in validDirections:
+        raise ValueError("Direction parameter is invalid")
+    
+    return True
+
+#this function makes the api call and return all posts and includes duplicates as well.
 def get_all_posts_by_tags(tags):
     all_tags = tags.split(',')
     all_posts = []
@@ -28,7 +45,8 @@ def get_all_posts_by_tags(tags):
         all_posts.append(dct2["posts"])
     return all_posts
     
-def get_unique_posts(all_posts):
+#this function returns all unique posts by using a map.
+def get_unique_posts(all_posts)-> list:
     unique_posts={}
     for post in all_posts:
         for sub_post in post:
@@ -36,39 +54,27 @@ def get_unique_posts(all_posts):
                 unique_posts[sub_post["id"]] = sub_post
     return list(unique_posts.values())
 
-
-def sort_results(posts, sortBy, direction):
+#this function returns sorted posts basis sortby and direction parameters
+def sort_results(posts, sortBy, direction) -> list:
 
     if direction == 'desc':
         return sorted(posts, key= lambda x: x[sortBy], reverse=True)
     else:
         return sorted(posts, key= lambda x: x[sortBy])
 
+# this is the function called from routes.py and returns the unique posts basis tag, sortby and direction.
+def get_all_posts(tags, sortBy, direction="asc") -> list:
 
-def get_all_posts(tags, sortBy, direction="asc"):
+    if validate_function(tags, sortBy, direction):
+        all_posts = get_all_posts_by_tags(tags)
+        all_unique_posts = get_unique_posts(all_posts)
 
-    validsortBy = ['id', 'author', 'authorID', 'likes', 'popularity', 'reads', 'tags', None]
-    validDirections = ['asc', 'desc', None]
-
-    if not tags or len(tags) == 0:
-        raise ValueError("Tags parameter is required")
-
-    if direction not in validDirections:
-        raise ValueError("Direction parameter is invalid")
-    
-    if sortBy not in validsortBy:
-        raise ValueError("sortBy parameter is invalid")
-    
-    all_posts = get_all_posts_by_tags(tags)
-    all_unique_posts = get_unique_posts(all_posts)
-
-   
-    if sortBy:
-        final_posts = sort_results(all_unique_posts, sortBy, direction)
-    else:
-        final_posts = all_unique_posts
-    
-    return final_posts
+        if sortBy:
+            final_posts = sort_results(all_unique_posts, sortBy, direction)
+        else:
+            final_posts = all_unique_posts
+        
+        return final_posts
 
     
 
