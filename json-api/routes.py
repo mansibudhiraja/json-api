@@ -11,8 +11,16 @@ def route_1():
 
 @app.route("/api/posts")
 def get_posts():
-    get_all_posts(request)
-    return "<p>Hello World</p>"
+    tags = request.args.get("tag")
+    sortBy = request.args.get("sortBy")
+    direction= request.args.get("direction")
+    try:
+        all_unique_posts = get_all_posts(tags, sortBy, direction)
+        return jsonify({"posts": all_unique_posts}), 200
+    except ValueError as err:
+        message = str(err)
+        return jsonify({"error": message}), 400
+   
 
 
 
