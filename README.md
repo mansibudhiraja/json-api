@@ -6,6 +6,8 @@
 3. SortBy and direction are optional and if provided, they should be valid fields.
 4. Sortby sorts the posts by any field in the post
 5. Direction can be asc or desc and if user doesn't provide a direction, then we assume it to be ascending.
+6. Created an abstract class called Cache which returns cached value when available. The request does not know whether we hit the cache or api. We saw an 100x improvement in the response time from 700-800ms to 6 ms when 7 tags were provided.
+7. Used threading to introduce concurrency. Saw an improvement in the time it took to fetch the results from the api.
 
 
 ##### Usage:
