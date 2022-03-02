@@ -2,16 +2,6 @@
 import urllib.request, json
 
 
-def get_all_posts_by_tags(api_client, tags) -> list:
-    all_tags = tags.split(",")
-    all_posts = []
-
-    for tag_name in all_tags:
-        complete_list = api_client.fetch_posts_by_tagname_from_external_api(tag_name)
-        all_posts.append(complete_list["posts"])
-    return all_posts
-
-
 # return the list of unique posts
 def get_unique_posts(all_posts) -> list:
     unique_posts = {}
@@ -61,7 +51,8 @@ def validate_parameters(tags, sortBy, direction) -> bool:
 def get_all_posts(api_client, tags, sortBy, direction="asc") -> list:
 
     if validate_parameters(tags, sortBy, direction):
-        all_posts = get_all_posts_by_tags(api_client, tags)
+        all_posts = api_client.get_all_posts_by_tags(tags)
+        final_posts=[]
         all_unique_posts = get_unique_posts(all_posts)
 
         if sortBy:
