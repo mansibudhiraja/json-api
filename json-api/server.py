@@ -1,7 +1,5 @@
 import json
-
 from flask import Flask, jsonify, request
-
 from controller.cache import ApiClient
 from controller.utils import get_all_posts
 
