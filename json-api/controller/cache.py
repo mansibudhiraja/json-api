@@ -1,7 +1,7 @@
 import json
 import urllib.request
 import concurrent.futures
-import time
+
 
 from expiringdict import ExpiringDict
 
@@ -29,15 +29,13 @@ class ApiClient:
         all_tags = tags.split(",")
         all_posts = []
         
-        t1=time.perf_counter()
+        
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            results = [executor.submit(self.fetch_posts_by_tagname_from_external_api, tagname) for tagname in all_tags]
+           results = [executor.submit(self.fetch_posts_by_tagname_from_external_api, tagname) for tagname in all_tags]
 
-            for f in concurrent.futures.as_completed(results):
-                all_posts.append(f.result())
+           for f in concurrent.futures.as_completed(results):
+               all_posts.append(f.result())
 
-        t2=time.perf_counter()
-        print(f'Finished in {t2-t1} seconds')
         return all_posts
 
 
