@@ -12,7 +12,7 @@
 
 
 
-|Caching enabled|Threading enabled|Timing|
+|Caching enabled|Threading enabled|Time taken per request|
 |---|----|----|
 |       Yes       |         Yes       | 0.32 seconds                |
 |       Yes       |         No        | 1.5 seconds                 |
