@@ -19,6 +19,8 @@
 |       No        |         Yes       | 2.6635391279999996 seconds  |
 |       No        |         No        | 15 seconds                  |
 
+9: Achieved 88% unit test coverage (measured using coverage.py)
+
 
 ##### Usage:
 1. used pip freeze to record all enviroment variables.
