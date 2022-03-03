@@ -9,10 +9,13 @@
 6. Created an abstract class called Cache which returns cached value when available. The request does not know whether we hit the cache or api. We saw an 100x improvement in the response time from 700-800ms to 6 ms when 7 tags were provided.
 7. Used threading to introduce concurrency
 8. created Performance method tp measure performance and got the following statistics:
-        | Cache and Threading | 0.32 seconds |
-        | Cache and No Threading | 1.5 seconds |
-        | No Cache and Threading |  2.6635391279999996 seconds |
-        | No Cache and No Threading | 15 seconds |
+
+        |Caching enabled|Threading enabled|Timing|
+        |---|----|----|
+        |       Yes       |         Yes       | 0.32 seconds                |
+        |       Yes       |         No        | 1.5 seconds                 |
+        |       No        |         Yes       | 2.6635391279999996 seconds  |
+        |       No        |         No        | 15 seconds                  |
 
 
 ##### Usage:
