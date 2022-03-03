@@ -1,6 +1,6 @@
 
 import urllib.request, json
-
+import time
 
 def get_all_posts_by_tags(api_client, tags) -> list:
     all_tags = tags.split(",")
@@ -61,7 +61,13 @@ def validate_parameters(tags, sortBy, direction) -> bool:
 def get_all_posts(api_client, tags, sortBy, direction="asc") -> list:
 
     if validate_parameters(tags, sortBy, direction):
+
+        t1= time.perf_counter()
         all_posts = get_all_posts_by_tags(api_client, tags)
+        t2= time.perf_counter()
+
+        print(f'the running time without threads is {t2-t1} seconds')  
+        
         all_unique_posts = get_unique_posts(all_posts)
 
         if sortBy:

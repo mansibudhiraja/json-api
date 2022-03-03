@@ -19,5 +19,6 @@ class ApiClient:
         data = response.read()
         all_posts = json.loads(data)
         self.cache[tagname] = all_posts
+        
         return all_posts
 
