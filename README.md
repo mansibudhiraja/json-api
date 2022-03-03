@@ -10,12 +10,14 @@
 7. Used threading to introduce concurrency
 8. created Performance method tp measure performance and got the following statistics:
 
-        |Caching enabled|Threading enabled|Timing|
-        |---|----|----|
-        |       Yes       |         Yes       | 0.32 seconds                |
-        |       Yes       |         No        | 1.5 seconds                 |
-        |       No        |         Yes       | 2.6635391279999996 seconds  |
-        |       No        |         No        | 15 seconds                  |
+
+
+|Caching enabled|Threading enabled|Timing|
+|---|----|----|
+|       Yes       |         Yes       | 0.32 seconds                |
+|       Yes       |         No        | 1.5 seconds                 |
+|       No        |         Yes       | 2.6635391279999996 seconds  |
+|       No        |         No        | 15 seconds                  |
 
 
 ##### Usage:
